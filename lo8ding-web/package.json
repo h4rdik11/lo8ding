@@ -1,0 +1,17 @@
+{
+  "name": "lo8ding-web",
+  "version": "0.0.1",
+  "private": true,
+  "homepage": "https://lo8ding.github.io/lo8ding-lib",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "gh-pages -d dist"
+  },
+  "dependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "lo8ding-lib": "*"
+  }
+}
