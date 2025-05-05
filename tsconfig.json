@@ -1,7 +1,18 @@
 {
-  "files": [],
-  "references": [
-    { "path": "./tsconfig.app.json" },
-    { "path": "./tsconfig.node.json" }
-  ],
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["DOM", "ESNext"],
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "node",
+    "baseUrl": ".",
+    "paths": {
+      "lo8ding-lib": ["packages/lo8ding-lib/src"],
+      "lo8ding-lib/*": ["packages/lo8ding-lib/src/*"]
+    }
+  },
+  "include": ["packages/*/src", "lo8ding-web/src"]
 }
