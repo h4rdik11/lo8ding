@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "yarn workspace lo8ding-lib build && yarn workspace lo8ding-web build",
-    "commit": "git-cz",
+    "commit": "git add . && git-cz",
     "deploy:gh": "yarn workspace lo8ding-web deploy",
     "prepare": "husky install",
     "publish:lib": "yarn workspace lo8ding-lib build && cd packages/lo8ding-lib && npm version patch && npm publish --access public",
