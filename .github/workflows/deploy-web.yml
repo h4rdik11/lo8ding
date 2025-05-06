@@ -35,6 +35,8 @@ jobs:
     permissions:
       pages: write # allow pushing to GH Pages
       id-token: write # required by the deploy action
+    environment:
+      name: github-pages
     steps:
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
