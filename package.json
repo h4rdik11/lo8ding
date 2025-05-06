@@ -12,14 +12,15 @@
     "deploy:gh": "yarn workspace lo8ding-web deploy",
     "prepare": "husky install",
     "publish:lib": "yarn workspace lo8ding-lib build && cd packages/lo8ding-lib && npm version patch && npm publish --access public",
-    "start": "yarn workspace lo8ding-web dev"
+    "start": "yarn workspace lo8ding-web dev",
+    "format": "prettier --write ."
   },
   "lint-staged": {
     "packages/**/*.{js,jsx,ts,tsx,css,md,json}": [
-      "prettier --write"
+      "prettier --write ./packages"
     ],
     "lo8ding-web/**/*.{js,jsx,ts,tsx,css,html,md,json}": [
-      "prettier --write"
+      "prettier --write ./lo8ding-web"
     ]
   },
   "config": {

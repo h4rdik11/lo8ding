@@ -7,3 +7,4 @@ A Vite-powered, React+TS component library with Purge-ready Tailwind CSS.
 ```bash
 yarn install
 yarn prepare   # set up Husky
+```

@@ -1,5 +1,5 @@
-import React from "react";
-import { SimpleLoader } from "lo8ding-lib";
+import React from 'react';
+import { SimpleLoader } from 'lo8ding-lib';
 
 export default function App() {
   return (

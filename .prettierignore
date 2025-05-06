@@ -3,3 +3,9 @@ dist
 build
 .husky
 *.lock
+.gitignore
+.prettierrc
+.prettierignore
+.gitignore
+.prettierrc
+.prettierignore
