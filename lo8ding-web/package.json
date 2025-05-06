@@ -2,7 +2,7 @@
   "name": "lo8ding-web",
   "version": "0.0.1",
   "private": true,
-  "homepage": "https://lo8ding.github.io/lo8ding-lib",
+  "homepage": "https://h4rdik11.github.io/lo8ding",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
