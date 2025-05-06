@@ -10,8 +10,11 @@
     "deploy": "yarn build && gh-pages -d dist"
   },
   "dependencies": {
+    "lo8ding-lib": "*",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "lo8ding-lib": "*"
+    "react-dom": "^18.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.3"
   }
 }
