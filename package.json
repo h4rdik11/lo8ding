@@ -10,15 +10,24 @@
     "deploy:gh": "yarn workspace lo8ding-web deploy",
     "prepare": "husky install",
     "publish:lib": "yarn workspace lo8ding-lib build && cd packages/lo8ding-lib && npm version patch && npm publish --access public",
-    "start": "yarn workspace lo8ding-web dev"
+    "start": "yarn workspace lo8ding-web dev",
+    "commit": "git-cz"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^17.0.0",
-    "@commitlint/config-conventional": "^17.0.0",
+    "@commitlint/cli": "^19.8.0",
+    "@commitlint/config-conventional": "^19.8.0",
     "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.0",
     "gh-pages": "^4.0.0",
+    "git-cz": "^4.9.0",
     "husky": "^8.0.0",
+    "lint-staged": "^15.5.1",
     "postcss": "^8.4.0",
     "tailwindcss": "^3.3.0",
     "typescript": "^4.9.0",
