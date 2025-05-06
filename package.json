@@ -1,5 +1,6 @@
 {
   "name": "lo8ding",
+  "version": "0.0.1",
   "private": true,
   "workspaces": [
     "packages/*",
@@ -7,23 +8,29 @@
   ],
   "scripts": {
     "build": "yarn workspace lo8ding-lib build && yarn workspace lo8ding-web build",
+    "commit": "git-cz",
     "deploy:gh": "yarn workspace lo8ding-web deploy",
     "prepare": "husky install",
     "publish:lib": "yarn workspace lo8ding-lib build && cd packages/lo8ding-lib && npm version patch && npm publish --access public",
-    "start": "yarn workspace lo8ding-web dev",
-    "commit": "git-cz"
+    "start": "yarn workspace lo8ding-web dev"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
       "git add"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
     "@commitlint/config-conventional": "^19.8.0",
     "@vitejs/plugin-react": "^3.0.0",
     "autoprefixer": "^10.4.0",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
     "gh-pages": "^4.0.0",
     "git-cz": "^4.9.0",
     "husky": "^8.0.0",
