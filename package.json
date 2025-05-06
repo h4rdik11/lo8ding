@@ -10,17 +10,19 @@
     "build": "yarn workspace lo8ding-lib build && yarn workspace lo8ding-web build",
     "commit": "git add . && git-cz",
     "deploy:gh": "yarn workspace lo8ding-web deploy",
+    "format": "prettier --write .",
     "prepare": "husky install",
     "publish:lib": "yarn workspace lo8ding-lib build && cd packages/lo8ding-lib && npm version patch && npm publish --access public",
-    "start": "yarn workspace lo8ding-web dev",
-    "format": "prettier --write ."
+    "start": "yarn workspace lo8ding-web dev"
   },
   "lint-staged": {
     "packages/**/*.{js,jsx,ts,tsx,css,md,json}": [
-      "prettier --write ./packages"
+      "prettier --write ./packages",
+      "git add"
     ],
     "lo8ding-web/**/*.{js,jsx,ts,tsx,css,html,md,json}": [
-      "prettier --write ./lo8ding-web"
+      "prettier --write ./lo8ding-web",
+      "git add"
     ]
   },
   "config": {
