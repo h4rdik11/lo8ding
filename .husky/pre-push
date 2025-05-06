@@ -1,34 +1,17 @@
-#!/usr/bin/env sh
-. "$(dirname "$0")/husky.sh"
+  #!/usr/bin/env sh  
+  . "$(dirname "$0")/husky.sh"  
 
-# Enforce commit message types on all commits being pushed
-#    Allowed types: test, feat, fix, chore, docs, refactor, style, ci, perf
-allowed='^(test|feat|fix|chore|docs|refactor|style|ci|perf):.+$'
-invalid=0
+  branch="$(git rev-parse --abbrev-ref HEAD)"  
+  pattern="main|^(test|feat|fix|chore|docs|refactor|style|ci|perf)\/[A-Z]+-[0-9]+-[a-z0-9-]+$"  
 
-# Read the ref updates from stdin (local_ref local_sha remote_ref remote_sha)
-while read local_ref local_sha remote_ref remote_sha
-do
-  # If this is a new branch, remote_sha is all zeroes; compare against empty tree
-  if [ "$remote_sha" = "0000000000000000000000000000000000000000" ]; then
-    range="$local_sha"
-  else
-    range="$remote_sha..$local_sha"
-  fi
-done
+  if ! echo "$branch" | grep -Eq "$pattern"; then  
+    echo ""  
+    echo "⛔ Invalid branch name:  $branch"  
+    echo "   Branch names must match: type/JIRA-123-short-description"  
+    echo ""  
+    exit 1  
+  fi  
 
-# Check each commit in that range
-for commit in $(git rev-list $range)
-do
-  subject="$(git log --format=%s -n1 $commit)"
-  if ! echo "$subject" | grep -Eq "$allowed"; then
-    echo ""
-    echo "⛔  Commit $commit has invalid message:"
-    echo "    \"$subject\""
-    echo "    Must start with one of: test, feat, fix, chore, docs, refactor, style, ci, perf"
-    echo ""
-    invalid=1
-  fi
-done
-
-[ $invalid -eq 1 ] && exit 1
+  # If you also want to run your pre-commit tasks here, uncomment:
+  # yarn lint-staged
+  
