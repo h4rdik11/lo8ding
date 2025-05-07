@@ -1,4 +1,5 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "target": "ESNext",
     "module": "ESNext",
@@ -9,10 +10,8 @@
     "jsx": "react-jsx",
     "moduleResolution": "node",
     "baseUrl": ".",
-    "paths": {
-      "lo8ding-lib": ["lo8ding-lib/src"],
-      "lo8ding-lib/*": ["lo8ding-lib/src/*"]
-    }
+    "outDir": "dist",
+    "declarationDir": "dist/types"
   },
-  "include": ["lo8ding-lib/src", "lo8ding-web/src"]
+  "include": ["src"]
 }
