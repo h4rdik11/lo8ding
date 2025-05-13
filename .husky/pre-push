@@ -1,17 +1,17 @@
-  #!/usr/bin/env sh  
-  . "$(dirname "$0")/husky.sh"  
+#!/usr/bin/env sh  
+. "$(dirname "$0")/husky.sh"  
 
-  branch="$(git rev-parse --abbrev-ref HEAD)"  
-  pattern="main|^(test|feat|fix|chore|docs|refactor|style|ci|perf)\/[A-Z]+-[0-9]+-[a-z0-9-]+$"  
+branch="$(git rev-parse --abbrev-ref HEAD)"  
+pattern="main|^(test|feat|fix|chore|docs|refactor|style|ci|perf)\/[A-Z]+-[0-9]+-[a-z0-9-]+$"  
 
-  if ! echo "$branch" | grep -Eq "$pattern"; then  
-    echo ""  
-    echo "⛔ Invalid branch name:  $branch"  
-    echo "   Branch names must match: type/JIRA-123-short-description"  
-    echo ""  
-    exit 1  
-  fi  
+if ! echo "$branch" | grep -Eq "$pattern"; then  
+  echo ""  
+  echo "⛔ Invalid branch name:  $branch"  
+  echo "   Branch names must match: type/JIRA-123-short-description"  
+  echo ""  
+  exit 1  
+fi  
 
-  # If you also want to run your pre-commit tasks here, uncomment:
-  # yarn lint-staged
-  
+# If you also want to run your pre-commit tasks here, uncomment:
+# yarn lint-staged
+
