@@ -8,4 +8,4 @@ dist
 .env.production.local
 .env.development
 .env.test
-.yarn
+.yarn/
