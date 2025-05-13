@@ -5,7 +5,7 @@ export default function App() {
     <div className="p-8">
       <span className="text-2xl mb-4">Library Showcase</span>
       <SimpleLoader />
-      <ProgressBar labelColor="text-white" />
+      <ProgressBar labelColor="text-black" />
     </div>
   );
 }
