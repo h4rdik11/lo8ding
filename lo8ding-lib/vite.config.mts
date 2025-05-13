@@ -1,11 +1,20 @@
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import path from 'path';
+import dts from 'vite-plugin-dts';
 
 export default defineConfig({
   root: __dirname,
-  plugins: [react(), tailwindcss()],
+  plugins: [
+    tailwindcss(),
+    dts({
+      include: ['src/**/*.ts', 'src/**/*.d.ts'],
+      outDir: 'dist/types',
+      entryRoot: 'src',
+      insertTypesEntry: true,
+      rollupTypes: true,
+    }),
+  ],
   build: {
     lib: {
       entry: path.resolve(__dirname, 'src/index.ts'),
@@ -13,12 +22,7 @@ export default defineConfig({
       fileName: (fmt) => `lo8ding-lib.${fmt}.js`,
       formats: ['es', 'cjs'],
     },
-    rollupOptions: {
-      external: ['react', 'react-dom'],
-      output: {
-        globals: { react: 'React', 'react-dom': 'ReactDOM' },
-      },
-    },
+    rollupOptions: {},
     cssCodeSplit: true,
   },
 });
