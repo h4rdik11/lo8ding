@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "build": "yarn workspace @h4rdik11/lo8ding-lib build && yarn workspace lo8ding-web build",
-    "commit": "git add . && git-cz",
+    "commit": "git-cz",
     "deploy:gh": "yarn workspace lo8ding-web deploy",
     "format": "prettier --write .",
     "prepare": "yarn changeset init && husky install",
@@ -45,5 +45,6 @@
     "lint-staged": "^15.5.1",
     "prettier": "^3.5.3",
     "typescript": "^4.9.0"
-  }
+  },
+  "packageManager": "yarn@4.9.1"
 }
