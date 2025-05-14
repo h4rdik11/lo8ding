@@ -8,16 +8,16 @@ interface ProgressBarProps extends BaseLoaderProps {
   label?: string;
   /** render label inside the bar instead of below */
   showLabelInside?: boolean;
-  /** Tailwind bg-* class for the filled portion */
-  barColor?: string;
-  /** Tailwind bg-* class for the track */
-  trackColor?: string;
-  /** Tailwind text-* class for the label */
-  labelColor?: string;
   /** add simple stripes */
   striped?: boolean;
   /** animate stripes */
   animated?: boolean;
+  /** hex color for the label */
+  labelColorHex?: string;
+  /** hex color for the filled portion */
+  barColorHex?: string;
+  /** hex color for the track */
+  trackColorHex?: string;
 }
 
 export const ProgressBar = ({
@@ -27,11 +27,11 @@ export const ProgressBar = ({
   size = 'medium',
   label,
   showLabelInside = false,
-  barColor = 'bg-blue-600',
-  trackColor = 'bg-gray-200',
-  labelColor = 'text-gray-700',
   striped = false,
   animated = false,
+  labelColorHex = '#364153',
+  barColorHex = '#155dfc',
+  trackColorHex = '#e5e7eb',
 }: ProgressBarProps) => {
   const heightMap: Record<string, string> = {
     small: 'h-2',
@@ -52,21 +52,26 @@ export const ProgressBar = ({
   return (
     <>
       <div
-        className={`w-full overflow-hidden rounded ${trackColor} ${className}`}
-        style={style}
+        className={`w-full overflow-hidden rounded ${className}`}
+        style={{
+          ...style,
+          ...(trackColorHex ? { backgroundColor: trackColorHex } : {}),
+        }}
       >
         <div
-          className={`relative ${barHeight} ${barColor} rounded transition-all duration-500 ease-in-out ${
+          className={`relative ${barHeight} rounded transition-all duration-500 ease-in-out ${
             animated ? 'animate-pulse' : ''
           }`}
           style={{
             width: `${pct}%`,
             ...stripeStyles,
+            ...(barColorHex ? { backgroundColor: barColorHex } : {}),
           }}
         >
           {showLabelInside && (
             <span
-              className={`absolute inset-0 flex items-center justify-center text-sm font-medium ${labelColor}`}
+              className={`absolute inset-0 flex items-center justify-center text-sm font-medium`}
+              style={labelColorHex ? { color: labelColorHex } : {}}
             >
               {displayText}
             </span>
@@ -74,7 +79,10 @@ export const ProgressBar = ({
         </div>
       </div>
       {!showLabelInside && (
-        <div className={`text-center text-sm mt-1 font-medium ${labelColor}`}>
+        <div
+          className={`text-center text-sm mt-1 font-medium`}
+          style={labelColorHex ? { color: labelColorHex } : {}}
+        >
           {displayText}
         </div>
       )}
