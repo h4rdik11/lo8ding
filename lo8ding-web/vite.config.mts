@@ -12,8 +12,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      // point your library import to local src for HMR
       '@h4dik11/lo8ding-lib': path.resolve(__dirname, '../lo8ding-lib/dist'),
+      '@': path.resolve(__dirname, './src'),
     },
   },
 });
